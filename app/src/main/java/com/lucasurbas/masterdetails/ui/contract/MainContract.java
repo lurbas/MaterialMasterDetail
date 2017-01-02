@@ -23,6 +23,8 @@ public interface MainContract {
         void goToSettings();
 
         void goToFeedback();
+
+        void goToDetails();
     }
 
     interface View extends BaseView {

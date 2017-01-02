@@ -1,8 +1,11 @@
 package com.lucasurbas.masterdetails.ui.navigation;
 
+import android.view.View;
+
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.ui.activity.MainActivity;
 import com.lucasurbas.masterdetails.ui.contract.MainContract;
+import com.lucasurbas.masterdetails.ui.fragment.DetailsFragment;
 import com.lucasurbas.masterdetails.ui.fragment.EmptyFragment;
 
 import javax.inject.Inject;
@@ -13,6 +16,7 @@ import javax.inject.Inject;
 
 public class MainNavigation implements MainContract.Navigation {
 
+    private static final String TAG_DETAILS = "tag_details";
     private MainActivity mainActivity;
 
     @Inject
@@ -21,28 +25,65 @@ public class MainNavigation implements MainContract.Navigation {
     }
 
 
+    private void singleColumn() {
+        mainActivity.findViewById(R.id.activity_main__space_master).setVisibility(View.GONE);
+        mainActivity.findViewById(R.id.activity_main__space_details).setVisibility(View.GONE);
+        mainActivity.findViewById(R.id.activity_main__frame_details).setVisibility(View.GONE);
+
+//        Fragment details = mainActivity.getSupportFragmentManager().findFragmentByTag(TAG_DETAILS);
+//        if (details != null) {
+//            mainActivity.getSupportFragmentManager().beginTransaction().remove(details).commitAllowingStateLoss();
+//        }
+    }
+
+    private void twoColumns() {
+        mainActivity.findViewById(R.id.activity_main__space_master).setVisibility(View.VISIBLE);
+        mainActivity.findViewById(R.id.activity_main__space_details).setVisibility(View.VISIBLE);
+        mainActivity.findViewById(R.id.activity_main__frame_details).setVisibility(View.VISIBLE);
+    }
+
+
     @Override
     public void goToHomeFeed() {
-        EmptyFragment fragment = EmptyFragment.newInstance("HomeFeed");
+        singleColumn();
+        String title = "Home Feed";
+        EmptyFragment fragment = EmptyFragment.newInstance(title);
+        mainActivity.getCustomAppBar().setTitle(title);
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, fragment).commitAllowingStateLoss();
     }
 
     @Override
     public void goToPeople() {
-        EmptyFragment fragment = EmptyFragment.newInstance("People");
+        singleColumn();
+        String title = "People";
+        EmptyFragment fragment = EmptyFragment.newInstance(title);
+        mainActivity.getCustomAppBar().setTitle(title);
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, fragment).commitAllowingStateLoss();
     }
 
     @Override
     public void goToFavorites() {
-        EmptyFragment fragment = EmptyFragment.newInstance("Favorites");
+        singleColumn();
+        String title = "Favorites";
+        EmptyFragment fragment = EmptyFragment.newInstance(title);
+        mainActivity.getCustomAppBar().setTitle(title);
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, fragment).commitAllowingStateLoss();
     }
 
     @Override
     public void goToMap() {
-        EmptyFragment fragment = EmptyFragment.newInstance("Map");
+        singleColumn();
+        String title = "Map";
+        EmptyFragment fragment = EmptyFragment.newInstance(title);
+        mainActivity.getCustomAppBar().setTitle(title);
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, fragment).commitAllowingStateLoss();
+    }
+
+    @Override
+    public void goToDetails() {
+        twoColumns();
+        DetailsFragment fragment = DetailsFragment.newInstance("Details");
+        mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_details, fragment, TAG_DETAILS).commitAllowingStateLoss();
     }
 
     @Override

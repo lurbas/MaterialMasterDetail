@@ -6,12 +6,14 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.injection.app.ApplicationComponent;
 import com.lucasurbas.masterdetails.injection.main.DaggerMainComponent;
 import com.lucasurbas.masterdetails.injection.main.MainModule;
 import com.lucasurbas.masterdetails.ui.contract.MainContract;
+import com.lucasurbas.masterdetails.ui.widget.CustomAppBar;
 
 import javax.inject.Inject;
 
@@ -21,9 +23,11 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity implements MainContract.View, NavigationView.OnNavigationItemSelectedListener {
 
     @Inject MainContract.Presenter presenter;
+    @Inject MainContract.Navigation navigation;
 
     @BindView(R.id.activity_main__nav_view) NavigationView navigationView;
     @BindView(R.id.activity_main__drawer) DrawerLayout drawer;
+    @BindView(R.id.activity_main__custom_appbar) CustomAppBar customAppBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,16 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         navigationView.setNavigationItemSelectedListener(this);
+        customAppBar.setOnNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                } else if (drawer != null && !drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.openDrawer(GravityCompat.START);
+                }
+            }
+        });
 
         presenter.attachView(this);
         if (savedInstanceState == null) {
@@ -69,22 +83,22 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
 
     @Override
     public void highlightHomeFeed() {
-
+        navigationView.setCheckedItem(R.id.menu_main_nav__home_feed);
     }
 
     @Override
     public void highlightPeople() {
-
+        navigationView.setCheckedItem(R.id.menu_main_nav__people);
     }
 
     @Override
     public void highlightFavorites() {
-
+        navigationView.setCheckedItem(R.id.menu_main_nav__favorites);
     }
 
     @Override
     public void highlightMap() {
-
+        navigationView.setCheckedItem(R.id.menu_main_nav__map);
     }
 
     @Override
@@ -128,5 +142,13 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
                 return false;
         }
         return true;
+    }
+
+    public CustomAppBar getCustomAppBar() {
+        return customAppBar;
+    }
+
+    public MainContract.Navigation getNavigation() {
+        return navigation;
     }
 }

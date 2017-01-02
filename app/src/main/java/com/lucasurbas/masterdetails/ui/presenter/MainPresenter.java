@@ -39,10 +39,10 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void clickFavorites() {
         if (view != null) {
-            view.highlightPeople();
+            view.highlightFavorites();
             view.closeDrawer();
         }
-        navigation.goToPeople();
+        navigation.goToFavorites();
     }
 
     @Override

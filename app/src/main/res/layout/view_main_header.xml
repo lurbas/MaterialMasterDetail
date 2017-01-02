@@ -6,17 +6,17 @@
     android:background="@color/colorAccent"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingBottom="16dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingTop="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
         android:id="@+id/view_main_header__avatar"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="16dp"
         android:src="@drawable/circle_black_transparent"/>
 
     <TextView
