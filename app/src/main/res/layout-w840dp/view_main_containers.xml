@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:gravity="center_horizontal">
 
-            <com.lucasurbas.masterdetails.ui.widget.BoundedFrameLayout
+            <com.lucasurbas.masterdetails.ui.widget.BoundedCardView
                 android:id="@+id/activity_main__frame_master"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -55,7 +55,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"/>
 
-        <com.lucasurbas.masterdetails.ui.widget.BoundedFrameLayout
+        <com.lucasurbas.masterdetails.ui.widget.BoundedCardView
             android:id="@+id/activity_main__frame_details"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -63,6 +63,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="@dimen/container_horizontal_padding"
             android:layout_marginRight="@dimen/container_horizontal_padding"
+            app:cardElevation="3dp"
             app:bounded_width="@dimen/container_max_width"/>
 
     </LinearLayout>

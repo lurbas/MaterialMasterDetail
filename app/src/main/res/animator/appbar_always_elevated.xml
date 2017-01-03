@@ -5,7 +5,7 @@
         <objectAnimator
             android:duration="1"
             android:propertyName="elevation"
-            android:valueTo="4dp"
+            android:valueTo="3dp"
             android:valueType="floatType"/>
     </item>
 

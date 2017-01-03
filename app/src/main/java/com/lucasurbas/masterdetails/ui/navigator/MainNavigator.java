@@ -21,7 +21,7 @@ public class MainNavigator implements MainContract.Navigator {
     private MainActivity mainActivity;
 
     public enum State {
-        SINGLE_COLUMN_MASTER, SINGLE_COLUMN_DETAILS, TWO_COLUMNS
+        SINGLE_COLUMN_MASTER, SINGLE_COLUMN_DETAILS, TWO_COLUMNS_EMPTY, TWO_COLUMNS_WITH_DETAILS
     }
 
     @Inject
@@ -58,13 +58,13 @@ public class MainNavigator implements MainContract.Navigator {
 
     @Override
     public void goToPeople() {
-        mainActivity.getCustomAppBar().setState(State.TWO_COLUMNS);
-        mainActivity.getContainersLayout().setState(State.TWO_COLUMNS);
+        mainActivity.getCustomAppBar().setState(State.TWO_COLUMNS_EMPTY);
+        mainActivity.getContainersLayout().setState(State.TWO_COLUMNS_EMPTY);
         clearDetails();
-        if (mainActivity.getContainersLayout().hasTwoColumns()) {
-            EmptyFragment details = EmptyFragment.newInstance("Empty Details");
-            mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_details, details, TAG_DETAILS).commitAllowingStateLoss();
-        }
+//        if (mainActivity.getContainersLayout().hasTwoColumns()) {
+//            EmptyFragment details = EmptyFragment.newInstance("Empty Details");
+//            mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_details, details, TAG_DETAILS).commitAllowingStateLoss();
+//        }
         String title = "People";
         EmptyFragment master = EmptyFragment.newInstance(title);
         mainActivity.getCustomAppBar().setTitle(title);
@@ -95,6 +95,8 @@ public class MainNavigator implements MainContract.Navigator {
 
     @Override
     public void goToDetails() {
+        mainActivity.getCustomAppBar().setState(State.TWO_COLUMNS_WITH_DETAILS);
+        mainActivity.getContainersLayout().setState(State.TWO_COLUMNS_WITH_DETAILS);
         DetailsFragment fragment = DetailsFragment.newInstance("Details");
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_details, fragment, TAG_DETAILS).commitAllowingStateLoss();
     }
@@ -112,8 +114,11 @@ public class MainNavigator implements MainContract.Navigator {
     @Override
     public boolean onBackPressed() {
         State state = mainActivity.getContainersLayout().getState();
-        if (state.equals(State.TWO_COLUMNS) && !mainActivity.getContainersLayout().hasTwoColumns() && clearDetails()) {
-            return true;
+        if (state.equals(State.TWO_COLUMNS_WITH_DETAILS) && !mainActivity.getContainersLayout().hasTwoColumns()) {
+            if (clearDetails()) {
+                mainActivity.getContainersLayout().setState(State.TWO_COLUMNS_EMPTY);
+                return true;
+            }
         }
         return false;
     }

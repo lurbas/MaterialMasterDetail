@@ -89,13 +89,26 @@ public class ContainersLayout extends FrameLayout {
         frameDetails.setVisibility(View.VISIBLE);
     }
 
-    private void twoColumns() {
+    private void twoColumnsEmpty() {
         if (hasTwoColumns()) {
             spaceMaster.setVisibility(View.VISIBLE);
             spaceDetails.setVisibility(View.VISIBLE);
+            frameDetails.setVisibility(View.VISIBLE);
+        } else {
+            frameDetails.setVisibility(View.GONE);
+        }
+        frameMaster.setVisibility(View.VISIBLE);
+    }
+
+    private void twoColumnsWithDetails() {
+        if (hasTwoColumns()) {
+            spaceMaster.setVisibility(View.VISIBLE);
+            spaceDetails.setVisibility(View.VISIBLE);
+            frameMaster.setVisibility(View.VISIBLE);
+        } else {
+            frameMaster.setVisibility(View.GONE);
         }
         frameDetails.setVisibility(View.VISIBLE);
-        frameMaster.setVisibility(View.VISIBLE);
     }
 
     public void setState(MainNavigator.State state) {
@@ -107,8 +120,11 @@ public class ContainersLayout extends FrameLayout {
             case SINGLE_COLUMN_DETAILS:
                 singleColumnDetails();
                 break;
-            case TWO_COLUMNS:
-                twoColumns();
+            case TWO_COLUMNS_EMPTY:
+                twoColumnsEmpty();
+                break;
+            case TWO_COLUMNS_WITH_DETAILS:
+                twoColumnsWithDetails();
                 break;
         }
     }

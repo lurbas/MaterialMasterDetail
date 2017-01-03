@@ -88,7 +88,8 @@ public class CustomAppBar extends AppBarLayout {
                     space.setVisibility(GONE);
                 }
                 break;
-            case TWO_COLUMNS:
+            case TWO_COLUMNS_EMPTY:
+            case TWO_COLUMNS_WITH_DETAILS:
                 if (space != null) {
                     space.setVisibility(VISIBLE);
                 }
