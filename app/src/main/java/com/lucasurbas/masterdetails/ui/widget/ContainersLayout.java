@@ -130,4 +130,8 @@ public class ContainersLayout extends FrameLayout {
         }
         super.onRestoreInstanceState(parcelable);
     }
+
+    public MainNavigator.State getState() {
+        return state;
+    }
 }

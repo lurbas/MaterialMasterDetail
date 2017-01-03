@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.AppBarLayout
+<merge
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/view_main_toolbar__appbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
-    android:theme="@style/AppTheme.ActionBar"
-    app:elevation="4dp">
+    android:theme="@style/AppTheme.ActionBar">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/view_main_toolbar__toolbar_general"
@@ -29,4 +28,4 @@
             android:layout_height="?attr/actionBarSize"/>
     </com.lucasurbas.masterdetails.ui.widget.BoundedFrameLayout>
 
-</android.support.design.widget.AppBarLayout>
+</merge>

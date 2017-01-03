@@ -13,7 +13,6 @@ import com.lucasurbas.masterdetails.injection.app.ApplicationComponent;
 import com.lucasurbas.masterdetails.injection.main.DaggerMainComponent;
 import com.lucasurbas.masterdetails.injection.main.MainModule;
 import com.lucasurbas.masterdetails.ui.contract.MainContract;
-import com.lucasurbas.masterdetails.ui.navigator.MainNavigator;
 import com.lucasurbas.masterdetails.ui.widget.ContainersLayout;
 import com.lucasurbas.masterdetails.ui.widget.CustomAppBar;
 
@@ -147,11 +146,20 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else if (!navigator.onBackPressed()) {
+            super.onBackPressed();
+        }
+    }
+
     public CustomAppBar getCustomAppBar() {
         return customAppBar;
     }
 
-    public ContainersLayout getContainersLayout(){
+    public ContainersLayout getContainersLayout() {
         return containersLayout;
     }
 

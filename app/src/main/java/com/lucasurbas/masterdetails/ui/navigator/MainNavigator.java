@@ -29,11 +29,13 @@ public class MainNavigator implements MainContract.Navigator {
         this.mainActivity = mainActivity;
     }
 
-    private void clearDetails() {
+    private boolean clearDetails() {
         Fragment details = mainActivity.getSupportFragmentManager().findFragmentByTag(TAG_DETAILS);
         if (details != null) {
             mainActivity.getSupportFragmentManager().beginTransaction().remove(details).commitNow();
+            return true;
         }
+        return false;
     }
 
     private void clearMaster() {
@@ -105,5 +107,14 @@ public class MainNavigator implements MainContract.Navigator {
     @Override
     public void goToFeedback() {
         //start new activity
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        State state = mainActivity.getContainersLayout().getState();
+        if (state.equals(State.TWO_COLUMNS) && !mainActivity.getContainersLayout().hasTwoColumns() && clearDetails()) {
+            return true;
+        }
+        return false;
     }
 }

@@ -1,17 +1,15 @@
 package com.lucasurbas.masterdetails.ui.widget;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.MenuRes;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
 
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.ui.navigator.MainNavigator;
@@ -23,7 +21,7 @@ import butterknife.ButterKnife;
  * Created by Lucas on 02/01/2017.
  */
 
-public class CustomAppBar extends FrameLayout {
+public class CustomAppBar extends AppBarLayout {
 
     private static final String STATE_SUPER = "state_super";
     private static final String STATE_TITLE = "state_title";
@@ -34,7 +32,7 @@ public class CustomAppBar extends FrameLayout {
     Toolbar toolbarGeneral;
     @BindView(R.id.view_main_toolbar__toolbar_specific) Toolbar toolbarSpecific;
     @Nullable
-    @BindView(R.id.view_main_toolbar___space_toolbar)
+    @BindView(R.id.view_main_toolbar__space_toolbar)
     View space;
 
     private MainNavigator.State state;
@@ -46,17 +44,6 @@ public class CustomAppBar extends FrameLayout {
 
     public CustomAppBar(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
-    }
-
-    public CustomAppBar(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init();
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public CustomAppBar(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
         init();
     }
 

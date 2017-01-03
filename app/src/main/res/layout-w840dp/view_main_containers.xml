@@ -12,6 +12,9 @@
 
         <com.lucasurbas.masterdetails.ui.widget.CustomAppBar
             android:id="@+id/activity_main__custom_appbar"
+            android:fitsSystemWindows="true"
+            android:stateListAnimator="@animator/appbar_always_elevated"
+            android:theme="@style/AppTheme.ActionBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

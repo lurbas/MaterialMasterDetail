@@ -25,6 +25,8 @@ public interface MainContract {
         void goToFeedback();
 
         void goToDetails();
+
+        boolean onBackPressed();
     }
 
     interface View extends BaseView {
