@@ -3,14 +3,18 @@ package com.lucasurbas.masterdetails.ui.widget;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.MenuRes;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.lucasurbas.masterdetails.R;
+import com.lucasurbas.masterdetails.ui.navigation.MainNavigation;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,10 +25,19 @@ import butterknife.ButterKnife;
 
 public class CustomAppBar extends FrameLayout {
 
+    private static final String STATE_SUPER = "state_super";
+    private static final String STATE_TITLE = "state_title";
+    private static final String STATE_TOOLBAR_STATE = "state_toolbar_state";
+
     @Nullable
     @BindView(R.id.view_main_toolbar__toolbar_general)
     Toolbar toolbarGeneral;
     @BindView(R.id.view_main_toolbar__toolbar_specific) Toolbar toolbarSpecific;
+    @Nullable
+    @BindView(R.id.view_main_toolbar___space_toolbar)
+    View space;
+
+    private MainNavigation.State state;
 
     public CustomAppBar(Context context) {
         super(context);
@@ -77,5 +90,42 @@ public class CustomAppBar extends FrameLayout {
         } else {
             toolbarSpecific.inflateMenu(menuMerged);
         }
+    }
+
+    public void setState(MainNavigation.State state) {
+        this.state = state;
+        switch (state) {
+            case SINGLE_COLUMN_MASTER:
+            case SINGLE_COLUMN_DETAILS:
+                if (space != null) {
+                    space.setVisibility(GONE);
+                }
+                break;
+            case TWO_COLUMNS:
+                if (space != null) {
+                    space.setVisibility(VISIBLE);
+                }
+                break;
+        }
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(STATE_SUPER, super.onSaveInstanceState());
+        bundle.putString(STATE_TITLE, (String) toolbarSpecific.getTitle());
+        bundle.putString(STATE_TOOLBAR_STATE, state.name());
+        return bundle;
+    }
+
+    @Override
+    public void onRestoreInstanceState(Parcelable parcelable) {
+        if (parcelable instanceof Bundle) {
+            Bundle bundle = (Bundle) parcelable;
+            toolbarSpecific.setTitle(bundle.getString(STATE_TITLE));
+            setState(MainNavigation.State.valueOf(bundle.getString(STATE_TOOLBAR_STATE)));
+            parcelable = bundle.getParcelable(STATE_SUPER);
+        }
+        super.onRestoreInstanceState(parcelable);
     }
 }

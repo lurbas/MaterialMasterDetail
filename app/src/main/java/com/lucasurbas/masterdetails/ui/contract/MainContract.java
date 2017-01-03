@@ -1,6 +1,7 @@
 package com.lucasurbas.masterdetails.ui.contract;
 
 
+import com.lucasurbas.masterdetails.ui.navigation.MainNavigation;
 import com.lucasurbas.masterdetails.ui.util.BaseNavigation;
 import com.lucasurbas.masterdetails.ui.util.BasePresenter;
 import com.lucasurbas.masterdetails.ui.util.BaseView;
@@ -25,6 +26,8 @@ public interface MainContract {
         void goToFeedback();
 
         void goToDetails();
+
+        void restoreState(MainNavigation.State state);
     }
 
     interface View extends BaseView {

@@ -20,7 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            app:bounded_width="@dimen/fragment_max_width"/>
+            android:layout_marginLeft="@dimen/container_horizontal_padding"
+            android:layout_marginRight="@dimen/container_horizontal_padding"
+            app:bounded_width="@dimen/container_max_width"/>
 
     </LinearLayout>
 
@@ -29,5 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
-        app:bounded_width="@dimen/fragment_max_width"/>
+        android:layout_marginLeft="@dimen/container_horizontal_padding"
+        android:layout_marginRight="@dimen/container_horizontal_padding"
+        app:bounded_width="@dimen/container_max_width"/>
 </FrameLayout>

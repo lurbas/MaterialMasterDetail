@@ -13,6 +13,7 @@ import com.lucasurbas.masterdetails.injection.app.ApplicationComponent;
 import com.lucasurbas.masterdetails.injection.main.DaggerMainComponent;
 import com.lucasurbas.masterdetails.injection.main.MainModule;
 import com.lucasurbas.masterdetails.ui.contract.MainContract;
+import com.lucasurbas.masterdetails.ui.navigation.MainNavigation;
 import com.lucasurbas.masterdetails.ui.widget.CustomAppBar;
 
 import javax.inject.Inject;
@@ -22,12 +23,16 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements MainContract.View, NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String STATE_NAVIGATION = "state_navigation";
+
     @Inject MainContract.Presenter presenter;
     @Inject MainContract.Navigation navigation;
 
     @BindView(R.id.activity_main__nav_view) NavigationView navigationView;
     @BindView(R.id.activity_main__drawer) DrawerLayout drawer;
     @BindView(R.id.activity_main__custom_appbar) CustomAppBar customAppBar;
+
+    public MainNavigation.State state;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -150,5 +155,18 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
 
     public MainContract.Navigation getNavigation() {
         return navigation;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString(STATE_NAVIGATION, state.name());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        this.state = MainNavigation.State.valueOf(savedInstanceState.getString(STATE_NAVIGATION));
+        navigation.restoreState(state);
     }
 }

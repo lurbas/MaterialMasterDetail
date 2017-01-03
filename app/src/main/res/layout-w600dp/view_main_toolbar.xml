@@ -5,9 +5,9 @@
     android:id="@+id/view_main_toolbar__appbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
     android:theme="@style/AppTheme.ActionBar"
-    app:elevation="4dp"
-    android:fitsSystemWindows="true">
+    app:elevation="4dp">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/view_main_toolbar__toolbar_general"
@@ -17,9 +17,11 @@
     <com.lucasurbas.masterdetails.ui.widget.BoundedFrameLayout
         android:id="@+id/view_main_toolbar__frame_specific"
         android:layout_width="match_parent"
-        android:layout_gravity="center_horizontal"
         android:layout_height="?attr/actionBarSize"
-        app:bounded_width="@dimen/fragment_max_width">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/container_horizontal_padding"
+        android:layout_marginRight="@dimen/container_horizontal_padding"
+        app:bounded_width="@dimen/container_max_width">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/view_main_toolbar__toolbar_specific"

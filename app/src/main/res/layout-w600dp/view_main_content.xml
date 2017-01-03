@@ -15,51 +15,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <LinearLayout
+        <com.lucasurbas.masterdetails.ui.widget.BoundedFrameLayout
+            android:id="@+id/activity_main__frame_master"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:animateLayoutChanges="true">
-
-            <com.lucasurbas.masterdetails.ui.widget.BoundedFrameLayout
-                android:id="@+id/activity_main__frame_master"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                app:bounded_width="@dimen/fragment_max_width"/>
-
-            <android.support.v4.widget.Space
-                android:id="@+id/activity_main__space_master"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-
-        </LinearLayout>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/container_horizontal_padding"
+            android:layout_marginRight="@dimen/container_horizontal_padding"
+            app:bounded_width="@dimen/container_max_width"/>
 
     </LinearLayout>
 
-    <LinearLayout
+    <com.lucasurbas.masterdetails.ui.widget.BoundedFrameLayout
+        android:id="@+id/activity_main__frame_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?actionBarSize"
-        android:gravity="center_horizontal"
-        android:animateLayoutChanges="true">
-
-        <android.support.v4.widget.Space
-            android:id="@+id/activity_main__space_details"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
-
-        <com.lucasurbas.masterdetails.ui.widget.BoundedFrameLayout
-            android:id="@+id/activity_main__frame_details"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            app:bounded_width="@dimen/fragment_max_width"/>
-
-    </LinearLayout>
-
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/container_horizontal_padding"
+        android:layout_marginRight="@dimen/container_horizontal_padding"
+        app:bounded_width="@dimen/container_max_width"/>
 </FrameLayout>
