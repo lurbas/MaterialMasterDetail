@@ -5,7 +5,7 @@ import android.content.Context;
 import com.lucasurbas.masterdetails.injection.ActivityScope;
 import com.lucasurbas.masterdetails.ui.activity.MainActivity;
 import com.lucasurbas.masterdetails.ui.contract.MainContract;
-import com.lucasurbas.masterdetails.ui.navigation.MainNavigation;
+import com.lucasurbas.masterdetails.ui.navigator.MainNavigator;
 import com.lucasurbas.masterdetails.ui.presenter.MainPresenter;
 
 import dagger.Module;
@@ -25,7 +25,7 @@ public class MainModule {
 
     @Provides
     @ActivityScope
-    MainContract.Navigation provideMainNavigation(MainNavigation navigation) {
+    MainContract.Navigator provideMainNavigation(MainNavigator navigation) {
         return navigation;
     }
 

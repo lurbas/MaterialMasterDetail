@@ -1,7 +1,6 @@
-package com.lucasurbas.masterdetails.ui.navigation;
+package com.lucasurbas.masterdetails.ui.navigator;
 
 import android.support.v4.app.Fragment;
-import android.view.View;
 
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.ui.activity.MainActivity;
@@ -15,7 +14,7 @@ import javax.inject.Inject;
  * Created by Lucas on 02/01/2017.
  */
 
-public class MainNavigation implements MainContract.Navigation {
+public class MainNavigator implements MainContract.Navigator {
 
     private static final String TAG_DETAILS = "tag_details";
     private static final String TAG_MASTER = "tag_master";
@@ -26,23 +25,8 @@ public class MainNavigation implements MainContract.Navigation {
     }
 
     @Inject
-    public MainNavigation(MainActivity mainActivity) {
+    public MainNavigator(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
-    }
-
-    private boolean hasTwoColumns() {
-        return mainActivity.findViewById(R.id.activity_main__space_master) != null;
-    }
-
-    private void singleColumnMaster() {
-        mainActivity.state = State.SINGLE_COLUMN_MASTER;
-        mainActivity.getCustomAppBar().setState(State.SINGLE_COLUMN_MASTER);
-        if (hasTwoColumns()) {
-            mainActivity.findViewById(R.id.activity_main__space_master).setVisibility(View.GONE);
-            mainActivity.findViewById(R.id.activity_main__space_details).setVisibility(View.GONE);
-        }
-        mainActivity.findViewById(R.id.activity_main__frame_details).setVisibility(View.GONE);
-        mainActivity.findViewById(R.id.activity_main__frame_master).setVisibility(View.VISIBLE);
     }
 
     private void clearDetails() {
@@ -52,17 +36,6 @@ public class MainNavigation implements MainContract.Navigation {
         }
     }
 
-    private void singleColumnDetails() {
-        mainActivity.state = State.SINGLE_COLUMN_DETAILS;
-        mainActivity.getCustomAppBar().setState(State.SINGLE_COLUMN_DETAILS);
-        if (hasTwoColumns()) {
-            mainActivity.findViewById(R.id.activity_main__space_master).setVisibility(View.GONE);
-            mainActivity.findViewById(R.id.activity_main__space_details).setVisibility(View.GONE);
-        }
-        mainActivity.findViewById(R.id.activity_main__frame_master).setVisibility(View.GONE);
-        mainActivity.findViewById(R.id.activity_main__frame_details).setVisibility(View.VISIBLE);
-    }
-
     private void clearMaster() {
         Fragment master = mainActivity.getSupportFragmentManager().findFragmentByTag(TAG_MASTER);
         if (master != null) {
@@ -70,20 +43,10 @@ public class MainNavigation implements MainContract.Navigation {
         }
     }
 
-    private void twoColumns() {
-        mainActivity.state = State.TWO_COLUMNS;
-        mainActivity.getCustomAppBar().setState(State.TWO_COLUMNS);
-        if (hasTwoColumns()) {
-            mainActivity.findViewById(R.id.activity_main__space_master).setVisibility(View.VISIBLE);
-            mainActivity.findViewById(R.id.activity_main__space_details).setVisibility(View.VISIBLE);
-        }
-        mainActivity.findViewById(R.id.activity_main__frame_details).setVisibility(View.VISIBLE);
-        mainActivity.findViewById(R.id.activity_main__frame_master).setVisibility(View.VISIBLE);
-    }
-
     @Override
     public void goToHomeFeed() {
-        singleColumnMaster();
+        mainActivity.getCustomAppBar().setState(State.SINGLE_COLUMN_MASTER);
+        mainActivity.getContainersLayout().setState(State.SINGLE_COLUMN_MASTER);
         clearDetails();
         String title = "Home Feed";
         EmptyFragment fragment = EmptyFragment.newInstance(title);
@@ -93,9 +56,10 @@ public class MainNavigation implements MainContract.Navigation {
 
     @Override
     public void goToPeople() {
-        twoColumns();
+        mainActivity.getCustomAppBar().setState(State.TWO_COLUMNS);
+        mainActivity.getContainersLayout().setState(State.TWO_COLUMNS);
         clearDetails();
-        if (hasTwoColumns()) {
+        if (mainActivity.getContainersLayout().hasTwoColumns()) {
             EmptyFragment details = EmptyFragment.newInstance("Empty Details");
             mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_details, details, TAG_DETAILS).commitAllowingStateLoss();
         }
@@ -107,7 +71,8 @@ public class MainNavigation implements MainContract.Navigation {
 
     @Override
     public void goToFavorites() {
-        singleColumnMaster();
+        mainActivity.getCustomAppBar().setState(State.SINGLE_COLUMN_MASTER);
+        mainActivity.getContainersLayout().setState(State.SINGLE_COLUMN_MASTER);
         clearDetails();
         String title = "Favorites";
         EmptyFragment fragment = EmptyFragment.newInstance(title);
@@ -117,7 +82,8 @@ public class MainNavigation implements MainContract.Navigation {
 
     @Override
     public void goToMap() {
-        singleColumnDetails();
+        mainActivity.getCustomAppBar().setState(State.SINGLE_COLUMN_DETAILS);
+        mainActivity.getContainersLayout().setState(State.SINGLE_COLUMN_DETAILS);
         clearMaster();
         String title = "Map";
         EmptyFragment fragment = EmptyFragment.newInstance(title);
@@ -129,21 +95,6 @@ public class MainNavigation implements MainContract.Navigation {
     public void goToDetails() {
         DetailsFragment fragment = DetailsFragment.newInstance("Details");
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_details, fragment, TAG_DETAILS).commitAllowingStateLoss();
-    }
-
-    @Override
-    public void restoreState(State state) {
-        switch (state) {
-            case SINGLE_COLUMN_MASTER:
-                singleColumnMaster();
-                break;
-            case SINGLE_COLUMN_DETAILS:
-                singleColumnDetails();
-                break;
-            case TWO_COLUMNS:
-                twoColumns();
-                break;
-        }
     }
 
     @Override

@@ -11,11 +11,11 @@ import javax.inject.Inject;
 public class MainPresenter implements MainContract.Presenter {
 
     private MainContract.View view;
-    private MainContract.Navigation navigation;
+    private MainContract.Navigator navigator;
 
     @Inject
-    public MainPresenter(MainContract.Navigation navigation) {
-        this.navigation = navigation;
+    public MainPresenter(MainContract.Navigator navigator) {
+        this.navigator = navigator;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class MainPresenter implements MainContract.Presenter {
             view.highlightHomeFeed();
             view.closeDrawer();
         }
-        navigation.goToHomeFeed();
+        navigator.goToHomeFeed();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class MainPresenter implements MainContract.Presenter {
             view.highlightPeople();
             view.closeDrawer();
         }
-        navigation.goToPeople();
+        navigator.goToPeople();
     }
 
     @Override
@@ -42,7 +42,7 @@ public class MainPresenter implements MainContract.Presenter {
             view.highlightFavorites();
             view.closeDrawer();
         }
-        navigation.goToFavorites();
+        navigator.goToFavorites();
     }
 
     @Override
@@ -51,7 +51,7 @@ public class MainPresenter implements MainContract.Presenter {
             view.highlightMap();
             view.closeDrawer();
         }
-        navigation.goToMap();
+        navigator.goToMap();
     }
 
     @Override
@@ -60,7 +60,7 @@ public class MainPresenter implements MainContract.Presenter {
 //            view.highlightSettings();
             view.closeDrawer();
         }
-        navigation.goToSettings();
+        navigator.goToSettings();
     }
 
     @Override
@@ -69,7 +69,7 @@ public class MainPresenter implements MainContract.Presenter {
 //            view.highlightHomeFeed();
             view.closeDrawer();
         }
-        navigation.goToFeedback();
+        navigator.goToFeedback();
     }
 
     @Override

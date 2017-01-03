@@ -46,7 +46,7 @@ public class EmptyFragment extends Fragment {
         title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).getNavigation().goToDetails();
+                ((MainActivity) getActivity()).getNavigator().goToDetails();
             }
         });
     }

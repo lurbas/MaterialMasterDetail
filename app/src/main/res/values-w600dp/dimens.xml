@@ -4,6 +4,7 @@
     <dimen name="activity_horizontal_margin">24dp</dimen>
 
     <!-- Container Sheet -->
+    <dimen name="container_max_width">540dp</dimen>
     <dimen name="container_horizontal_padding">72dp</dimen>
 
 </resources>

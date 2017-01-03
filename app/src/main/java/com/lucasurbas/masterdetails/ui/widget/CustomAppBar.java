@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.lucasurbas.masterdetails.R;
-import com.lucasurbas.masterdetails.ui.navigation.MainNavigation;
+import com.lucasurbas.masterdetails.ui.navigator.MainNavigator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,7 +37,7 @@ public class CustomAppBar extends FrameLayout {
     @BindView(R.id.view_main_toolbar___space_toolbar)
     View space;
 
-    private MainNavigation.State state;
+    private MainNavigator.State state;
 
     public CustomAppBar(Context context) {
         super(context);
@@ -92,7 +92,7 @@ public class CustomAppBar extends FrameLayout {
         }
     }
 
-    public void setState(MainNavigation.State state) {
+    public void setState(MainNavigator.State state) {
         this.state = state;
         switch (state) {
             case SINGLE_COLUMN_MASTER:
@@ -123,7 +123,7 @@ public class CustomAppBar extends FrameLayout {
         if (parcelable instanceof Bundle) {
             Bundle bundle = (Bundle) parcelable;
             toolbarSpecific.setTitle(bundle.getString(STATE_TITLE));
-            setState(MainNavigation.State.valueOf(bundle.getString(STATE_TOOLBAR_STATE)));
+            setState(MainNavigator.State.valueOf(bundle.getString(STATE_TOOLBAR_STATE)));
             parcelable = bundle.getParcelable(STATE_SUPER);
         }
         super.onRestoreInstanceState(parcelable);
