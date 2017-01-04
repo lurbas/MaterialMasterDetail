@@ -4,10 +4,10 @@ import android.support.v4.app.Fragment;
 
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.ui.favorites.FavoritesFragment;
-import com.lucasurbas.masterdetails.ui.people.PeopleContract;
 import com.lucasurbas.masterdetails.ui.fragment.DetailsFragment;
-import com.lucasurbas.masterdetails.ui.fragment.EmptyFragment;
 import com.lucasurbas.masterdetails.ui.homefeed.HomeFeedFragment;
+import com.lucasurbas.masterdetails.ui.map.MapFragment;
+import com.lucasurbas.masterdetails.ui.people.PeopleContract;
 import com.lucasurbas.masterdetails.ui.people.PeopleFragment;
 
 import javax.inject.Inject;
@@ -79,9 +79,7 @@ public class MainNavigator implements MainContract.Navigator, PeopleContract.Nav
         mainActivity.getCustomAppBar().setState(State.SINGLE_COLUMN_DETAILS);
         mainActivity.getContainersLayout().setState(State.SINGLE_COLUMN_DETAILS);
         clearMaster();
-        String title = "Map";
-        EmptyFragment fragment = EmptyFragment.newInstance(title);
-        mainActivity.getCustomAppBar().setTitle(title);
+        MapFragment fragment = MapFragment.newInstance();
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_details, fragment, TAG_DETAILS).commitAllowingStateLoss();
     }
 
