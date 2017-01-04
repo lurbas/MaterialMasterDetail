@@ -123,5 +123,6 @@ public class PeopleFragment extends Fragment implements PeopleContract.View {
     @Override
     public void showPeopleList(List<Person> peopleList) {
         adapter.setPeopleList(peopleList);
+        recyclerView.scrollToPosition(0);
     }
 }

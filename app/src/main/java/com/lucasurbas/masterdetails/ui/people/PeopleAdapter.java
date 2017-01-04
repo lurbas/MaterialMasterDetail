@@ -1,5 +1,6 @@
 package com.lucasurbas.masterdetails.ui.people;
 
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -43,9 +44,11 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PersonView
         holder.personView.setUser(peopleList.get(position));
     }
 
-    public void setPeopleList(List<Person> peopleList){
-        this.peopleList = peopleList;
-        notifyDataSetChanged();
+    public void setPeopleList(List<Person> peopleList) {
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new PeopleListDiffCallback(this.peopleList, peopleList));
+        this.peopleList.clear();
+        this.peopleList.addAll(peopleList);
+        diffResult.dispatchUpdatesTo(this);
     }
 
     @Override

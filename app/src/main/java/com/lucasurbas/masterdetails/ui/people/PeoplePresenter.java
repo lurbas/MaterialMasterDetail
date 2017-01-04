@@ -39,7 +39,7 @@ public class PeoplePresenter implements PeopleContract.Presenter {
     @Override
     public void getPeople() {
         peopleList = new ArrayList<Person>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 8; i++) {
             Person person = new Person(UUID.randomUUID().toString());
             person.setName("Name " + (i + 1));
             person.setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eadem nunc mea adversum te oratio est.");
