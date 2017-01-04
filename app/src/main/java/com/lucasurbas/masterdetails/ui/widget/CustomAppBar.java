@@ -70,8 +70,17 @@ public class CustomAppBar extends AppBarLayout {
         toolbarSpecific.setTitle(title);
     }
 
-    public void setMenuRes(@MenuRes int menuGeneral, @MenuRes int menuSpecific, @MenuRes int menuMerged) {
+    public void clearMenu() {
+        toolbarSpecific.getMenu().clear();
         if (toolbarGeneral != null) {
+            toolbarGeneral.getMenu().clear();
+        }
+    }
+
+    public void setMenuRes(@MenuRes int menuGeneral, @MenuRes int menuSpecific, @MenuRes int menuMerged) {
+        toolbarSpecific.getMenu().clear();
+        if (toolbarGeneral != null) {
+            toolbarGeneral.getMenu().clear();
             toolbarGeneral.inflateMenu(menuGeneral);
             toolbarSpecific.inflateMenu(menuSpecific);
         } else {

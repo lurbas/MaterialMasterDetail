@@ -7,6 +7,7 @@ import com.lucasurbas.masterdetails.ui.activity.MainActivity;
 import com.lucasurbas.masterdetails.ui.contract.MainContract;
 import com.lucasurbas.masterdetails.ui.fragment.DetailsFragment;
 import com.lucasurbas.masterdetails.ui.fragment.EmptyFragment;
+import com.lucasurbas.masterdetails.ui.fragment.HomeFeedFragment;
 
 import javax.inject.Inject;
 
@@ -50,9 +51,7 @@ public class MainNavigator implements MainContract.Navigator {
         mainActivity.getCustomAppBar().setState(State.SINGLE_COLUMN_MASTER);
         mainActivity.getContainersLayout().setState(State.SINGLE_COLUMN_MASTER);
         clearDetails();
-        String title = "Home Feed";
-        EmptyFragment fragment = EmptyFragment.newInstance(title);
-        mainActivity.getCustomAppBar().setTitle(title);
+        HomeFeedFragment fragment = HomeFeedFragment.newInstance();
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, fragment, TAG_MASTER).commitAllowingStateLoss();
     }
 
@@ -61,10 +60,6 @@ public class MainNavigator implements MainContract.Navigator {
         mainActivity.getCustomAppBar().setState(State.TWO_COLUMNS_EMPTY);
         mainActivity.getContainersLayout().setState(State.TWO_COLUMNS_EMPTY);
         clearDetails();
-//        if (mainActivity.getContainersLayout().hasTwoColumns()) {
-//            EmptyFragment details = EmptyFragment.newInstance("Empty Details");
-//            mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_details, details, TAG_DETAILS).commitAllowingStateLoss();
-//        }
         String title = "People";
         EmptyFragment master = EmptyFragment.newInstance(title);
         mainActivity.getCustomAppBar().setTitle(title);
