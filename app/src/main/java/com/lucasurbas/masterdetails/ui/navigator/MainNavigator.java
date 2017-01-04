@@ -5,9 +5,11 @@ import android.support.v4.app.Fragment;
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.ui.activity.MainActivity;
 import com.lucasurbas.masterdetails.ui.contract.MainContract;
+import com.lucasurbas.masterdetails.ui.contract.PeopleContract;
 import com.lucasurbas.masterdetails.ui.fragment.DetailsFragment;
 import com.lucasurbas.masterdetails.ui.fragment.EmptyFragment;
 import com.lucasurbas.masterdetails.ui.fragment.HomeFeedFragment;
+import com.lucasurbas.masterdetails.ui.fragment.PeopleFragment;
 
 import javax.inject.Inject;
 
@@ -15,7 +17,7 @@ import javax.inject.Inject;
  * Created by Lucas on 02/01/2017.
  */
 
-public class MainNavigator implements MainContract.Navigator {
+public class MainNavigator implements MainContract.Navigator, PeopleContract.Navigator {
 
     private static final String TAG_DETAILS = "tag_details";
     private static final String TAG_MASTER = "tag_master";
@@ -60,9 +62,7 @@ public class MainNavigator implements MainContract.Navigator {
         mainActivity.getCustomAppBar().setState(State.TWO_COLUMNS_EMPTY);
         mainActivity.getContainersLayout().setState(State.TWO_COLUMNS_EMPTY);
         clearDetails();
-        String title = "People";
-        EmptyFragment master = EmptyFragment.newInstance(title);
-        mainActivity.getCustomAppBar().setTitle(title);
+        PeopleFragment master = PeopleFragment.newInstance();
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, master, TAG_MASTER).commitAllowingStateLoss();
     }
 
@@ -89,7 +89,7 @@ public class MainNavigator implements MainContract.Navigator {
     }
 
     @Override
-    public void goToDetails() {
+    public void goToPersonDetails() {
         mainActivity.getCustomAppBar().setState(State.TWO_COLUMNS_WITH_DETAILS);
         mainActivity.getContainersLayout().setState(State.TWO_COLUMNS_WITH_DETAILS);
         DetailsFragment fragment = DetailsFragment.newInstance("Details");

@@ -11,6 +11,7 @@ import android.view.View;
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.injection.app.ApplicationComponent;
 import com.lucasurbas.masterdetails.injection.main.DaggerMainComponent;
+import com.lucasurbas.masterdetails.injection.main.MainComponent;
 import com.lucasurbas.masterdetails.injection.main.MainModule;
 import com.lucasurbas.masterdetails.ui.contract.MainContract;
 import com.lucasurbas.masterdetails.ui.widget.ContainersLayout;
@@ -30,6 +31,8 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
     @BindView(R.id.activity_main__drawer) DrawerLayout drawer;
     @BindView(R.id.activity_main__custom_appbar) CustomAppBar customAppBar;
     @BindView(R.id.activity_main__containers_layout) ContainersLayout containersLayout;
+
+    private MainComponent mainComponent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,11 +59,12 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
 
     @Override
     protected void setupActivityComponent(ApplicationComponent applicationComponent) {
-        DaggerMainComponent.builder()
+        mainComponent = DaggerMainComponent.builder()
                 .applicationComponent(applicationComponent)
                 .mainModule(new MainModule(this))
-                .build()
-                .inject(this);
+                .build();
+
+        mainComponent.inject(this);
     }
 
     @Override
@@ -165,6 +169,10 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
 
     public MainContract.Navigator getNavigator() {
         return navigator;
+    }
+
+    public MainComponent getMainComponent(){
+        return mainComponent;
     }
 
 }

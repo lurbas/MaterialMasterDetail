@@ -24,8 +24,6 @@ public interface MainContract {
 
         void goToFeedback();
 
-        void goToDetails();
-
         boolean onBackPressed();
     }
 

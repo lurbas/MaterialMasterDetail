@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lucasurbas.masterdetails.R;
-import com.lucasurbas.masterdetails.ui.activity.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,11 +42,5 @@ public class EmptyFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
         title.setText(getArguments().getString(KEY_TITLE));
-        title.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity) getActivity()).getNavigator().goToDetails();
-            }
-        });
     }
 }

@@ -19,6 +19,16 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
+    public void attachView(MainContract.View view) {
+        this.view = view;
+    }
+
+    @Override
+    public void detachView() {
+        this.view = null;
+    }
+
+    @Override
     public void clickHomeFeed() {
         if (view != null) {
             view.highlightHomeFeed();
@@ -70,15 +80,5 @@ public class MainPresenter implements MainContract.Presenter {
             view.closeDrawer();
         }
         navigator.goToFeedback();
-    }
-
-    @Override
-    public void attachView(MainContract.View view) {
-        this.view = view;
-    }
-
-    @Override
-    public void detachView() {
-        this.view = null;
     }
 }

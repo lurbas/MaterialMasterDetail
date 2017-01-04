@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_homefeed__settings"
-        android:title="@string/menu_homefeed__settings"
+        android:id="@+id/menu_people__settings"
+        android:title="@string/menu_people__settings"
         app:showAsAction="never"/>
 </menu>
