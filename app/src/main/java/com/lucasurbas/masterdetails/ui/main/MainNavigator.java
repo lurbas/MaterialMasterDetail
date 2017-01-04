@@ -3,6 +3,7 @@ package com.lucasurbas.masterdetails.ui.main;
 import android.support.v4.app.Fragment;
 
 import com.lucasurbas.masterdetails.R;
+import com.lucasurbas.masterdetails.ui.favorites.FavoritesFragment;
 import com.lucasurbas.masterdetails.ui.people.PeopleContract;
 import com.lucasurbas.masterdetails.ui.fragment.DetailsFragment;
 import com.lucasurbas.masterdetails.ui.fragment.EmptyFragment;
@@ -69,9 +70,7 @@ public class MainNavigator implements MainContract.Navigator, PeopleContract.Nav
         mainActivity.getCustomAppBar().setState(State.SINGLE_COLUMN_MASTER);
         mainActivity.getContainersLayout().setState(State.SINGLE_COLUMN_MASTER);
         clearDetails();
-        String title = "Favorites";
-        EmptyFragment fragment = EmptyFragment.newInstance(title);
-        mainActivity.getCustomAppBar().setTitle(title);
+        FavoritesFragment fragment = FavoritesFragment.newInstance();
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, fragment, TAG_MASTER).commitAllowingStateLoss();
     }
 
