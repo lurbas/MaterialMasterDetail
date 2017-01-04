@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.data.Person;
+import com.lucasurbas.masterdetails.ui.main.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,6 +61,16 @@ public class PersonDetailsFragment extends Fragment {
 
     private void setupToolbar() {
         toolbar.inflateMenu(R.menu.person_details);
+
+        if (!((MainActivity) getActivity()).getContainersLayout().hasTwoColumns()) {
+            toolbar.setNavigationIcon(R.drawable.ic_back_24dp);
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().onBackPressed();
+                }
+            });
+        }
     }
 
     private void setPerson(Person person) {

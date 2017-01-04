@@ -24,6 +24,7 @@ import butterknife.ButterKnife;
 public class MapFragment extends Fragment {
 
     @BindView(R.id.fragment_map__map_image) ImageView mapImage;
+    @BindView(R.id.fragment_map__main_icon) ImageView mainIcon;
 
     public static MapFragment newInstance() {
         MapFragment fragment = new MapFragment();
@@ -57,8 +58,18 @@ public class MapFragment extends Fragment {
     }
 
     private void setupToolbar() {
-        CustomAppBar appBar = ((MainActivity)getActivity()).getCustomAppBar();
+        CustomAppBar appBar = ((MainActivity) getActivity()).getCustomAppBar();
         appBar.setTitle("");
         appBar.clearMenu();
+
+        if (!appBar.hasGeneralToolbar()) {
+            mainIcon.setImageResource(R.drawable.ic_menu_24dp);
+            mainIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((MainActivity) getActivity()).toggleDrawer();
+                }
+            });
+        }
     }
 }

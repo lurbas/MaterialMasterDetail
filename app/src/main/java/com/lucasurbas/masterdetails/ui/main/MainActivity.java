@@ -43,11 +43,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
         customAppBar.setOnNavigationClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                } else if (drawer != null && !drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.openDrawer(GravityCompat.START);
-                }
+                toggleDrawer();
             }
         });
 
@@ -83,6 +79,14 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
     @Override
     public void openDrawer() {
         if (drawer != null && !drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.openDrawer(GravityCompat.START);
+        }
+    }
+
+    public void toggleDrawer() {
+        if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else if (drawer != null && !drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.openDrawer(GravityCompat.START);
         }
     }
@@ -171,7 +175,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
         return navigator;
     }
 
-    public MainComponent getMainComponent(){
+    public MainComponent getMainComponent() {
         return mainComponent;
     }
 

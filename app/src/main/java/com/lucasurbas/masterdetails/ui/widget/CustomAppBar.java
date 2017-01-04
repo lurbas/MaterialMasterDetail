@@ -58,6 +58,10 @@ public class CustomAppBar extends AppBarLayout {
         }
     }
 
+    public boolean hasGeneralToolbar() {
+        return toolbarGeneral != null;
+    }
+
     public void setOnNavigationClickListener(OnClickListener onNavigationClickListener) {
         if (toolbarGeneral != null) {
             toolbarGeneral.setNavigationOnClickListener(onNavigationClickListener);
