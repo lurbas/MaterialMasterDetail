@@ -3,6 +3,7 @@ package com.lucasurbas.masterdetails.ui.people;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -18,8 +19,20 @@ import butterknife.ButterKnife;
 
 public class PersonView extends FrameLayout {
 
+    @BindView(R.id.item_view_user__row) View row;
     @BindView(R.id.item_view_user__name) TextView name;
     @BindView(R.id.item_view_user__description) TextView description;
+    @BindView(R.id.item_view_user__action) View action;
+
+    private Person person;
+    private PersonView.OnPersonClickListener onPersonClickListener;
+
+    public interface OnPersonClickListener {
+
+        void onPersonClick(Person person);
+
+        void onPersonActionClick(Person person);
+    }
 
     public PersonView(Context context) {
         super(context);
@@ -37,7 +50,29 @@ public class PersonView extends FrameLayout {
     }
 
     public void setUser(Person person) {
+        this.person = person;
         name.setText(person.getName());
         description.setText(person.getDescription());
+    }
+
+    public void setonPersonClickListener(final OnPersonClickListener onPersonClickListener) {
+        this.onPersonClickListener = onPersonClickListener;
+        if (onPersonClickListener != null) {
+            row.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onPersonClickListener.onPersonClick(person);
+                }
+            });
+            action.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onPersonClickListener.onPersonActionClick(person);
+                }
+            });
+        } else {
+            row.setOnClickListener(null);
+            action.setOnClickListener(null);
+        }
     }
 }

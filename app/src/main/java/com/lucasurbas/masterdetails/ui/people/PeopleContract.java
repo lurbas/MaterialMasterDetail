@@ -26,6 +26,7 @@ public interface PeopleContract {
 
         void showPeopleList(List<Person> peopleList);
 
+        void showToast(String message);
     }
 
     interface Presenter extends BasePresenter<PeopleContract.View> {

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.data.Person;
@@ -73,6 +74,17 @@ public class PeopleFragment extends Fragment implements PeopleContract.View {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         adapter = new PeopleAdapter();
+        adapter.setOnPersonClickListener(new PersonView.OnPersonClickListener() {
+            @Override
+            public void onPersonClick(Person person) {
+                presenter.clickPerson();
+            }
+
+            @Override
+            public void onPersonActionClick(Person person) {
+                presenter.clickPersonAction();
+            }
+        });
         recyclerView.setAdapter(adapter);
     }
 
@@ -124,5 +136,10 @@ public class PeopleFragment extends Fragment implements PeopleContract.View {
     public void showPeopleList(List<Person> peopleList) {
         adapter.setPeopleList(peopleList);
         recyclerView.scrollToPosition(0);
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 }

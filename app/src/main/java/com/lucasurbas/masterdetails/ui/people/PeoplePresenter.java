@@ -57,7 +57,7 @@ public class PeoplePresenter implements PeopleContract.Presenter {
 
     @Override
     public void clickPersonAction() {
-
+        view.showToast("Action clicked");
     }
 
     @Override

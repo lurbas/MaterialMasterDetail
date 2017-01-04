@@ -18,6 +18,8 @@ import java.util.List;
 public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PersonViewHolder> {
 
     private List<Person> peopleList;
+    private PersonView.OnPersonClickListener onPersonClickListener;
+
 
     public static class PersonViewHolder extends RecyclerView.ViewHolder {
 
@@ -33,6 +35,10 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PersonView
         this.peopleList = new ArrayList<Person>();
     }
 
+    public void setOnPersonClickListener(PersonView.OnPersonClickListener onPersonClickListener) {
+        this.onPersonClickListener = onPersonClickListener;
+    }
+
     @Override
     public PeopleAdapter.PersonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         PersonView view = (PersonView) LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view_user, parent, false);
@@ -42,6 +48,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PersonView
     @Override
     public void onBindViewHolder(PersonViewHolder holder, int position) {
         holder.personView.setUser(peopleList.get(position));
+        holder.personView.setonPersonClickListener(onPersonClickListener);
     }
 
     public void setPeopleList(List<Person> peopleList) {
