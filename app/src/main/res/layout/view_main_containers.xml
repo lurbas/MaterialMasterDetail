@@ -36,5 +36,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="@dimen/container_horizontal_padding"
         android:layout_marginRight="@dimen/container_horizontal_padding"
+        android:background="@android:color/white"
         app:bounded_width="@dimen/container_max_width"/>
 </FrameLayout>

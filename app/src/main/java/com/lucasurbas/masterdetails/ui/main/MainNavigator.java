@@ -3,8 +3,9 @@ package com.lucasurbas.masterdetails.ui.main;
 import android.support.v4.app.Fragment;
 
 import com.lucasurbas.masterdetails.R;
+import com.lucasurbas.masterdetails.data.Person;
 import com.lucasurbas.masterdetails.ui.favorites.FavoritesFragment;
-import com.lucasurbas.masterdetails.ui.fragment.DetailsFragment;
+import com.lucasurbas.masterdetails.ui.persondetails.PersonDetailsFragment;
 import com.lucasurbas.masterdetails.ui.homefeed.HomeFeedFragment;
 import com.lucasurbas.masterdetails.ui.map.MapFragment;
 import com.lucasurbas.masterdetails.ui.people.PeopleContract;
@@ -84,10 +85,10 @@ public class MainNavigator implements MainContract.Navigator, PeopleContract.Nav
     }
 
     @Override
-    public void goToPersonDetails() {
+    public void goToPersonDetails(Person person) {
         mainActivity.getCustomAppBar().setState(State.TWO_COLUMNS_WITH_DETAILS);
         mainActivity.getContainersLayout().setState(State.TWO_COLUMNS_WITH_DETAILS);
-        DetailsFragment fragment = DetailsFragment.newInstance("Details");
+        PersonDetailsFragment fragment = PersonDetailsFragment.newInstance(person);
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_details, fragment, TAG_DETAILS).commitAllowingStateLoss();
     }
 

@@ -77,12 +77,12 @@ public class PeopleFragment extends Fragment implements PeopleContract.View {
         adapter.setOnPersonClickListener(new PersonView.OnPersonClickListener() {
             @Override
             public void onPersonClick(Person person) {
-                presenter.clickPerson();
+                presenter.clickPerson(person);
             }
 
             @Override
             public void onPersonActionClick(Person person) {
-                presenter.clickPersonAction();
+                presenter.clickPersonAction(person);
             }
         });
         recyclerView.setAdapter(adapter);

@@ -15,7 +15,7 @@ public interface PeopleContract {
 
     interface Navigator extends BaseNavigator {
 
-        void goToPersonDetails();
+        void goToPersonDetails(Person person);
     }
 
     interface View extends BaseView {
@@ -33,9 +33,9 @@ public interface PeopleContract {
 
         void getPeople();
 
-        void clickPerson();
+        void clickPerson(Person person);
 
-        void clickPersonAction();
+        void clickPersonAction(Person person);
 
         void loadMorePeople();
     }

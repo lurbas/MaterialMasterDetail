@@ -25,4 +25,6 @@
 
     <string name="fragment_map__search">Search...</string>
 
+    <string name="menu_person_details__share">Share</string>
+    <string name="menu_person_details__favorite">Favorite</string>
 </resources>

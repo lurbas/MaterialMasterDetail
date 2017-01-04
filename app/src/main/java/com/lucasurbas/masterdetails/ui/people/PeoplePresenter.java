@@ -51,13 +51,13 @@ public class PeoplePresenter implements PeopleContract.Presenter {
     }
 
     @Override
-    public void clickPerson() {
-        navigator.goToPersonDetails();
+    public void clickPerson(Person person) {
+        navigator.goToPersonDetails(person);
     }
 
     @Override
-    public void clickPersonAction() {
-        view.showToast("Action clicked");
+    public void clickPersonAction(Person person) {
+        view.showToast("Action clicked: " + person.getName());
     }
 
     @Override
