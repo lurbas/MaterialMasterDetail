@@ -1,15 +1,16 @@
 package com.lucasurbas.masterdetails.ui.main;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.data.Person;
 import com.lucasurbas.masterdetails.ui.favorites.FavoritesFragment;
-import com.lucasurbas.masterdetails.ui.persondetails.PersonDetailsFragment;
 import com.lucasurbas.masterdetails.ui.homefeed.HomeFeedFragment;
 import com.lucasurbas.masterdetails.ui.map.MapFragment;
 import com.lucasurbas.masterdetails.ui.people.PeopleContract;
 import com.lucasurbas.masterdetails.ui.people.PeopleFragment;
+import com.lucasurbas.masterdetails.ui.persondetails.PersonDetailsFragment;
 
 import javax.inject.Inject;
 
@@ -33,9 +34,13 @@ public class MainNavigator implements MainContract.Navigator, PeopleContract.Nav
     }
 
     private boolean clearDetails() {
-        Fragment details = mainActivity.getSupportFragmentManager().findFragmentByTag(TAG_DETAILS);
+        final Fragment details = mainActivity.getSupportFragmentManager().findFragmentByTag(TAG_DETAILS);
         if (details != null) {
-            mainActivity.getSupportFragmentManager().beginTransaction().remove(details).commitNow();
+            mainActivity.getSupportFragmentManager()
+                    .beginTransaction()
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
+                    .remove(details)
+                    .commitNow();
             return true;
         }
         return false;
@@ -89,7 +94,11 @@ public class MainNavigator implements MainContract.Navigator, PeopleContract.Nav
         mainActivity.getCustomAppBar().setState(State.TWO_COLUMNS_WITH_DETAILS);
         mainActivity.getContainersLayout().setState(State.TWO_COLUMNS_WITH_DETAILS);
         PersonDetailsFragment fragment = PersonDetailsFragment.newInstance(person);
-        mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_details, fragment, TAG_DETAILS).commitAllowingStateLoss();
+        mainActivity.getSupportFragmentManager()
+                .beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .replace(R.id.activity_main__frame_details, fragment, TAG_DETAILS)
+                .commitAllowingStateLoss();
     }
 
     @Override

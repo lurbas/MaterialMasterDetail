@@ -1,11 +1,17 @@
 package com.lucasurbas.masterdetails.ui.widget;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
+import android.support.v4.view.animation.FastOutLinearInInterpolator;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,15 +20,20 @@ import android.widget.FrameLayout;
 
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.ui.main.MainNavigator;
+import com.lucasurbas.masterdetails.ui.util.ViewUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static android.animation.ObjectAnimator.ofFloat;
 
 /**
  * Created by Lucas on 03/01/2017.
  */
 
 public class ContainersLayout extends FrameLayout {
+
+    public static final int ANIM_DURATION = 250;
 
     private static final String STATE_SUPER = "state_super";
     private static final String STATE_CONTAINERS_STATE = "state_containers_state";
@@ -75,8 +86,10 @@ public class ContainersLayout extends FrameLayout {
         if (hasTwoColumns()) {
             spaceMaster.setVisibility(View.GONE);
             spaceDetails.setVisibility(View.GONE);
+            frameDetails.setVisibility(View.GONE);
+        } else {
+            animateOutFrameDetails();
         }
-        frameDetails.setVisibility(View.GONE);
         frameMaster.setVisibility(View.VISIBLE);
     }
 
@@ -95,7 +108,7 @@ public class ContainersLayout extends FrameLayout {
             spaceDetails.setVisibility(View.VISIBLE);
             frameDetails.setVisibility(View.VISIBLE);
         } else {
-            frameDetails.setVisibility(View.GONE);
+            animateOutFrameDetails();
         }
         frameMaster.setVisibility(View.VISIBLE);
     }
@@ -105,10 +118,62 @@ public class ContainersLayout extends FrameLayout {
             spaceMaster.setVisibility(View.VISIBLE);
             spaceDetails.setVisibility(View.VISIBLE);
             frameMaster.setVisibility(View.VISIBLE);
+            frameDetails.setVisibility(View.VISIBLE);
         } else {
-            frameMaster.setVisibility(View.GONE);
+            animateInFrameDetails();
         }
+    }
+
+    private void animateInFrameDetails() {
         frameDetails.setVisibility(View.VISIBLE);
+        ViewUtils.onLaidOut(frameDetails, new Runnable() {
+            @Override
+            public void run() {
+                ObjectAnimator alpha = ObjectAnimator.ofFloat(frameDetails, View.ALPHA, 0.4f, 1f);
+                ObjectAnimator translate = ofFloat(frameDetails, View.TRANSLATION_Y, frameDetails.getHeight() * 0.3f, 0f);
+
+                AnimatorSet set = new AnimatorSet();
+                set.playTogether(alpha, translate);
+                set.setDuration(ANIM_DURATION);
+                set.setInterpolator(new LinearOutSlowInInterpolator());
+                set.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        frameMaster.setVisibility(View.GONE);
+                    }
+                });
+                set.start();
+            }
+        });
+    }
+
+    private void animateOutFrameDetails() {
+        ViewUtils.onLaidOut(frameDetails, new Runnable() {
+            @Override
+            public void run() {
+                if (!frameDetails.isShown()) {
+                    return;
+                }
+                ObjectAnimator alpha = ObjectAnimator.ofFloat(frameDetails, View.ALPHA, 1f, 0f);
+                ObjectAnimator translate = ofFloat(frameDetails, View.TRANSLATION_Y, 0f, frameDetails.getHeight() * 0.3f);
+
+                AnimatorSet set = new AnimatorSet();
+                set.playTogether(alpha, translate);
+                set.setDuration(ANIM_DURATION);
+                set.setInterpolator(new FastOutLinearInInterpolator());
+                set.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        frameDetails.setAlpha(1f);
+                        frameDetails.setTranslationY(0);
+                        frameDetails.setVisibility(View.GONE);
+                    }
+                });
+                set.start();
+            }
+        });
     }
 
     public void setState(MainNavigator.State state) {

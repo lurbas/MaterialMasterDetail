@@ -72,7 +72,12 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
     @Override
     public void closeDrawer() {
         if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+            drawer.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
+            }, 100);
         }
     }
 
