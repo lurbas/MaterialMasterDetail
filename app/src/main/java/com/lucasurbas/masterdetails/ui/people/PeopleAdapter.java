@@ -1,4 +1,4 @@
-package com.lucasurbas.masterdetails.ui.adapter;
+package com.lucasurbas.masterdetails.ui.people;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.data.Person;
-import com.lucasurbas.masterdetails.ui.widget.PersonView;
 
 import java.util.ArrayList;
 import java.util.List;

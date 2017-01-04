@@ -1,4 +1,4 @@
-package com.lucasurbas.masterdetails.ui.widget;
+package com.lucasurbas.masterdetails.ui.people;
 
 import android.content.Context;
 import android.util.AttributeSet;

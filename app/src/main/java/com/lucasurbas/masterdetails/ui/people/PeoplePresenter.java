@@ -1,9 +1,8 @@
-package com.lucasurbas.masterdetails.ui.presenter;
+package com.lucasurbas.masterdetails.ui.people;
 
 import android.os.Handler;
 
 import com.lucasurbas.masterdetails.data.Person;
-import com.lucasurbas.masterdetails.ui.contract.PeopleContract;
 
 import java.util.ArrayList;
 import java.util.List;

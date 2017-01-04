@@ -1,6 +1,4 @@
-package com.lucasurbas.masterdetails.ui.presenter;
-
-import com.lucasurbas.masterdetails.ui.contract.MainContract;
+package com.lucasurbas.masterdetails.ui.main;
 
 import javax.inject.Inject;
 

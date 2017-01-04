@@ -1,4 +1,4 @@
-package com.lucasurbas.masterdetails.ui.contract;
+package com.lucasurbas.masterdetails.ui.main;
 
 
 import com.lucasurbas.masterdetails.ui.util.BaseNavigator;

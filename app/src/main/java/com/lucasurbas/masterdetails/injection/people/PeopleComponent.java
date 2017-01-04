@@ -1,7 +1,7 @@
 package com.lucasurbas.masterdetails.injection.people;
 
 import com.lucasurbas.masterdetails.injection.FragmentScope;
-import com.lucasurbas.masterdetails.ui.fragment.PeopleFragment;
+import com.lucasurbas.masterdetails.ui.people.PeopleFragment;
 
 import dagger.Subcomponent;
 

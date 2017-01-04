@@ -1,4 +1,4 @@
-package com.lucasurbas.masterdetails.ui.contract;
+package com.lucasurbas.masterdetails.ui.people;
 
 import com.lucasurbas.masterdetails.data.Person;
 import com.lucasurbas.masterdetails.ui.util.BaseNavigator;

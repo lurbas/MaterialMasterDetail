@@ -3,10 +3,10 @@ package com.lucasurbas.masterdetails.injection.main;
 import android.content.Context;
 
 import com.lucasurbas.masterdetails.injection.ActivityScope;
-import com.lucasurbas.masterdetails.ui.activity.MainActivity;
-import com.lucasurbas.masterdetails.ui.contract.MainContract;
-import com.lucasurbas.masterdetails.ui.navigator.MainNavigator;
-import com.lucasurbas.masterdetails.ui.presenter.MainPresenter;
+import com.lucasurbas.masterdetails.ui.main.MainActivity;
+import com.lucasurbas.masterdetails.ui.main.MainContract;
+import com.lucasurbas.masterdetails.ui.main.MainNavigator;
+import com.lucasurbas.masterdetails.ui.main.MainPresenter;
 
 import dagger.Module;
 import dagger.Provides;

@@ -4,7 +4,7 @@ import com.lucasurbas.masterdetails.injection.ActivityScope;
 import com.lucasurbas.masterdetails.injection.app.ApplicationComponent;
 import com.lucasurbas.masterdetails.injection.people.PeopleComponent;
 import com.lucasurbas.masterdetails.injection.people.PeopleModule;
-import com.lucasurbas.masterdetails.ui.activity.MainActivity;
+import com.lucasurbas.masterdetails.ui.main.MainActivity;
 
 import dagger.Component;
 

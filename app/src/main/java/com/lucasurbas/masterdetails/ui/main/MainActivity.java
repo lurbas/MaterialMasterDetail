@@ -1,4 +1,4 @@
-package com.lucasurbas.masterdetails.ui.activity;
+package com.lucasurbas.masterdetails.ui.main;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,7 +13,7 @@ import com.lucasurbas.masterdetails.injection.app.ApplicationComponent;
 import com.lucasurbas.masterdetails.injection.main.DaggerMainComponent;
 import com.lucasurbas.masterdetails.injection.main.MainComponent;
 import com.lucasurbas.masterdetails.injection.main.MainModule;
-import com.lucasurbas.masterdetails.ui.contract.MainContract;
+import com.lucasurbas.masterdetails.ui.util.BaseActivity;
 import com.lucasurbas.masterdetails.ui.widget.ContainersLayout;
 import com.lucasurbas.masterdetails.ui.widget.CustomAppBar;
 

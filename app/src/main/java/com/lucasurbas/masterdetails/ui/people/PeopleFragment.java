@@ -1,4 +1,4 @@
-package com.lucasurbas.masterdetails.ui.fragment;
+package com.lucasurbas.masterdetails.ui.people;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,9 +13,7 @@ import android.view.ViewGroup;
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.data.Person;
 import com.lucasurbas.masterdetails.injection.people.PeopleModule;
-import com.lucasurbas.masterdetails.ui.activity.MainActivity;
-import com.lucasurbas.masterdetails.ui.adapter.PeopleAdapter;
-import com.lucasurbas.masterdetails.ui.contract.PeopleContract;
+import com.lucasurbas.masterdetails.ui.main.MainActivity;
 import com.lucasurbas.masterdetails.ui.widget.CustomAppBar;
 
 import java.util.List;

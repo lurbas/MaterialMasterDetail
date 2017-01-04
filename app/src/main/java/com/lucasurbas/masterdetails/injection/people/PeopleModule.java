@@ -1,9 +1,9 @@
 package com.lucasurbas.masterdetails.injection.people;
 
 import com.lucasurbas.masterdetails.injection.FragmentScope;
-import com.lucasurbas.masterdetails.ui.contract.PeopleContract;
-import com.lucasurbas.masterdetails.ui.navigator.MainNavigator;
-import com.lucasurbas.masterdetails.ui.presenter.PeoplePresenter;
+import com.lucasurbas.masterdetails.ui.people.PeopleContract;
+import com.lucasurbas.masterdetails.ui.main.MainNavigator;
+import com.lucasurbas.masterdetails.ui.people.PeoplePresenter;
 
 import dagger.Module;
 import dagger.Provides;

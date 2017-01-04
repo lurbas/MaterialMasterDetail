@@ -1,15 +1,13 @@
-package com.lucasurbas.masterdetails.ui.navigator;
+package com.lucasurbas.masterdetails.ui.main;
 
 import android.support.v4.app.Fragment;
 
 import com.lucasurbas.masterdetails.R;
-import com.lucasurbas.masterdetails.ui.activity.MainActivity;
-import com.lucasurbas.masterdetails.ui.contract.MainContract;
-import com.lucasurbas.masterdetails.ui.contract.PeopleContract;
+import com.lucasurbas.masterdetails.ui.people.PeopleContract;
 import com.lucasurbas.masterdetails.ui.fragment.DetailsFragment;
 import com.lucasurbas.masterdetails.ui.fragment.EmptyFragment;
-import com.lucasurbas.masterdetails.ui.fragment.HomeFeedFragment;
-import com.lucasurbas.masterdetails.ui.fragment.PeopleFragment;
+import com.lucasurbas.masterdetails.ui.homefeed.HomeFeedFragment;
+import com.lucasurbas.masterdetails.ui.people.PeopleFragment;
 
 import javax.inject.Inject;
 
