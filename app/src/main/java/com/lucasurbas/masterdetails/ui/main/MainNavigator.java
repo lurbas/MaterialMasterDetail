@@ -38,7 +38,7 @@ public class MainNavigator implements MainContract.Navigator, PeopleContract.Nav
         if (details != null) {
             mainActivity.getSupportFragmentManager()
                     .beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                     .remove(details)
                     .commitNow();
             return true;
@@ -96,7 +96,7 @@ public class MainNavigator implements MainContract.Navigator, PeopleContract.Nav
         PersonDetailsFragment fragment = PersonDetailsFragment.newInstance(person);
         mainActivity.getSupportFragmentManager()
                 .beginTransaction()
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .replace(R.id.activity_main__frame_details, fragment, TAG_DETAILS)
                 .commitAllowingStateLoss();
     }
