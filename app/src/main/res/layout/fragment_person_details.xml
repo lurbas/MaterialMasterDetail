@@ -27,6 +27,6 @@
         android:layout_marginTop="16dp"
         android:textSize="14sp"
         app:lastLineDescent="8sp"
-        app:leading="16sp"/>
+        app:leading="24sp"/>
 
 </LinearLayout>

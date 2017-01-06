@@ -5,13 +5,13 @@
         android:id="@+id/primary_nav"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/menu_main_nav__home_feed"
-            android:icon="@drawable/ic_home_24dp"
-            android:title="@string/menu_main_nav__home_feed" />
-        <item
             android:id="@+id/menu_main_nav__people"
             android:icon="@drawable/ic_people_24dp"
             android:title="@string/menu_main_nav__people" />
+        <item
+            android:id="@+id/menu_main_nav__home_feed"
+            android:icon="@drawable/ic_home_24dp"
+            android:title="@string/menu_main_nav__home_feed" />
         <item
             android:id="@+id/menu_main_nav__favorites"
             android:icon="@drawable/ic_favorite_24dp"

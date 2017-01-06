@@ -129,12 +129,12 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_main_nav__home_feed:
-                presenter.clickHomeFeed();
-                break;
-
             case R.id.menu_main_nav__people:
                 presenter.clickPeople();
+                break;
+
+            case R.id.menu_main_nav__home_feed:
+                presenter.clickHomeFeed();
                 break;
 
             case R.id.menu_main_nav__favorites:
