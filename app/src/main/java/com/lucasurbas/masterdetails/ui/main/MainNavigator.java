@@ -59,7 +59,7 @@ public class MainNavigator implements MainContract.Navigator, PeopleContract.Nav
         mainActivity.getCustomAppBar().setState(State.SINGLE_COLUMN_MASTER);
         mainActivity.getContainersLayout().setState(State.SINGLE_COLUMN_MASTER);
         HomeFeedFragment fragment = HomeFeedFragment.newInstance();
-        mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, fragment, TAG_MASTER).commitAllowingStateLoss();
+        mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, fragment, TAG_MASTER).commitNow();
     }
 
     @Override
@@ -68,7 +68,7 @@ public class MainNavigator implements MainContract.Navigator, PeopleContract.Nav
         mainActivity.getCustomAppBar().setState(State.TWO_COLUMNS_EMPTY);
         mainActivity.getContainersLayout().setState(State.TWO_COLUMNS_EMPTY);
         PeopleFragment master = PeopleFragment.newInstance();
-        mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, master, TAG_MASTER).commitAllowingStateLoss();
+        mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, master, TAG_MASTER).commitNow();
     }
 
     @Override
@@ -77,7 +77,7 @@ public class MainNavigator implements MainContract.Navigator, PeopleContract.Nav
         mainActivity.getCustomAppBar().setState(State.SINGLE_COLUMN_MASTER);
         mainActivity.getContainersLayout().setState(State.SINGLE_COLUMN_MASTER);
         FavoritesFragment fragment = FavoritesFragment.newInstance();
-        mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, fragment, TAG_MASTER).commitAllowingStateLoss();
+        mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, fragment, TAG_MASTER).commitNow();
     }
 
     @Override
@@ -86,7 +86,7 @@ public class MainNavigator implements MainContract.Navigator, PeopleContract.Nav
         mainActivity.getCustomAppBar().setState(State.SINGLE_COLUMN_DETAILS);
         mainActivity.getContainersLayout().setState(State.SINGLE_COLUMN_DETAILS);
         MapFragment fragment = MapFragment.newInstance();
-        mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_details, fragment, TAG_DETAILS).commitAllowingStateLoss();
+        mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_details, fragment, TAG_DETAILS).commitNow();
     }
 
     @Override
@@ -98,7 +98,7 @@ public class MainNavigator implements MainContract.Navigator, PeopleContract.Nav
                 .beginTransaction()
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .replace(R.id.activity_main__frame_details, fragment, TAG_DETAILS)
-                .commitAllowingStateLoss();
+                .commitNow();
     }
 
     @Override
