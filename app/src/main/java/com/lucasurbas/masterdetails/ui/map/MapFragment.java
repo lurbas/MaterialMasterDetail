@@ -1,7 +1,5 @@
 package com.lucasurbas.masterdetails.ui.map;
 
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.ui.main.MainActivity;
@@ -23,7 +22,7 @@ import butterknife.ButterKnife;
 
 public class MapFragment extends Fragment {
 
-    @BindView(R.id.fragment_map__map_image) ImageView mapImage;
+    @BindView(R.id.fragment_map__title) TextView title;
     @BindView(R.id.fragment_map__main_icon) ImageView mainIcon;
 
     public static MapFragment newInstance() {
@@ -43,12 +42,7 @@ public class MapFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-
-        ColorMatrix cm = new ColorMatrix();
-        cm.setSaturation(0);
-        ColorMatrixColorFilter cf = new ColorMatrixColorFilter(cm);
-        mapImage.setColorFilter(cf);
-
+        title.setText(getString(R.string.fragment_map__title));
     }
 
     @Override

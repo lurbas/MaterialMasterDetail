@@ -15,7 +15,7 @@
         android:layout_height="match_parent"/>
 
     <android.support.design.widget.NavigationView
-        android:id="@+id/activity_main__nav_view"
+        android:id="@+id/activity_main__nav"
         android:layout_width="@dimen/nav_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"

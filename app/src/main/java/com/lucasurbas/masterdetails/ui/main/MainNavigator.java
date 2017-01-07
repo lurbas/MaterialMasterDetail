@@ -55,36 +55,36 @@ public class MainNavigator implements MainContract.Navigator, PeopleContract.Nav
 
     @Override
     public void goToHomeFeed() {
+        clearDetails();
         mainActivity.getCustomAppBar().setState(State.SINGLE_COLUMN_MASTER);
         mainActivity.getContainersLayout().setState(State.SINGLE_COLUMN_MASTER);
-        clearDetails();
         HomeFeedFragment fragment = HomeFeedFragment.newInstance();
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, fragment, TAG_MASTER).commitAllowingStateLoss();
     }
 
     @Override
     public void goToPeople() {
+        clearDetails();
         mainActivity.getCustomAppBar().setState(State.TWO_COLUMNS_EMPTY);
         mainActivity.getContainersLayout().setState(State.TWO_COLUMNS_EMPTY);
-        clearDetails();
         PeopleFragment master = PeopleFragment.newInstance();
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, master, TAG_MASTER).commitAllowingStateLoss();
     }
 
     @Override
     public void goToFavorites() {
+        clearDetails();
         mainActivity.getCustomAppBar().setState(State.SINGLE_COLUMN_MASTER);
         mainActivity.getContainersLayout().setState(State.SINGLE_COLUMN_MASTER);
-        clearDetails();
         FavoritesFragment fragment = FavoritesFragment.newInstance();
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_master, fragment, TAG_MASTER).commitAllowingStateLoss();
     }
 
     @Override
     public void goToMap() {
+        clearMaster();
         mainActivity.getCustomAppBar().setState(State.SINGLE_COLUMN_DETAILS);
         mainActivity.getContainersLayout().setState(State.SINGLE_COLUMN_DETAILS);
-        clearMaster();
         MapFragment fragment = MapFragment.newInstance();
         mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.activity_main__frame_details, fragment, TAG_DETAILS).commitAllowingStateLoss();
     }

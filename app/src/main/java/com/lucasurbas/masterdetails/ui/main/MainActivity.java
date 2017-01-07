@@ -2,11 +2,16 @@ package com.lucasurbas.masterdetails.ui.main;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.OnApplyWindowInsetsListener;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.WindowInsetsCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.lucasurbas.masterdetails.R;
 import com.lucasurbas.masterdetails.injection.app.ApplicationComponent;
@@ -27,7 +32,13 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
     @Inject MainContract.Presenter presenter;
     @Inject MainContract.Navigator navigator;
 
-    @BindView(R.id.activity_main__nav_view) NavigationView navigationView;
+    @BindView(R.id.activity_main__nav) NavigationView navigationView;
+    @Nullable
+    @BindView(R.id.activity_main__nav_side)
+    NavigationView navigationSideView;
+    @Nullable
+    @BindView(R.id.activity_main__insets)
+    ViewGroup insetsView;
     @BindView(R.id.activity_main__drawer) DrawerLayout drawer;
     @BindView(R.id.activity_main__custom_appbar) CustomAppBar customAppBar;
     @BindView(R.id.activity_main__containers_layout) ContainersLayout containersLayout;
@@ -39,6 +50,19 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        if (insetsView != null && navigationSideView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(insetsView, new OnApplyWindowInsetsListener() {
+                @Override
+                public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
+                    insetsView.setTranslationY(insets.getSystemWindowInsetTop());
+                    navigationSideView.setTranslationY(-insets.getSystemWindowInsetTop());
+                    return insets.consumeSystemWindowInsets();
+                }
+            });
+            navigationSideView.setNavigationItemSelectedListener(this);
+        }
+
         navigationView.setNavigationItemSelectedListener(this);
         customAppBar.setOnNavigationClickListener(new View.OnClickListener() {
             @Override
@@ -99,31 +123,43 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
     @Override
     public void highlightHomeFeed() {
         navigationView.setCheckedItem(R.id.menu_main_nav__home_feed);
+        if (navigationSideView != null) {
+            navigationSideView.setCheckedItem(R.id.menu_main_nav__home_feed);
+        }
     }
 
     @Override
     public void highlightPeople() {
         navigationView.setCheckedItem(R.id.menu_main_nav__people);
+        if (navigationSideView != null) {
+            navigationSideView.setCheckedItem(R.id.menu_main_nav__people);
+        }
     }
 
     @Override
     public void highlightFavorites() {
         navigationView.setCheckedItem(R.id.menu_main_nav__favorites);
+        if (navigationSideView != null) {
+            navigationSideView.setCheckedItem(R.id.menu_main_nav__favorites);
+        }
     }
 
     @Override
     public void highlightMap() {
         navigationView.setCheckedItem(R.id.menu_main_nav__map);
+        if (navigationSideView != null) {
+            navigationSideView.setCheckedItem(R.id.menu_main_nav__map);
+        }
     }
 
     @Override
     public void highlightSettings() {
-
+        //empty
     }
 
     @Override
     public void highlightFeedback() {
-
+        //empty
     }
 
     @Override

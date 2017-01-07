@@ -24,7 +24,8 @@
     <string name="menu_favorites__settings">Settings</string>
     <string name="menu_favorites__heart">Heart</string>
 
-    <string name="fragment_map__search">Search...</string>
+    <string name="fragment_map__title">Map</string>
+    <string name="fragment_map__search">Search…</string>
 
     <string name="menu_person_details__share">Share</string>
     <string name="menu_person_details__favorite">Favorite</string>
