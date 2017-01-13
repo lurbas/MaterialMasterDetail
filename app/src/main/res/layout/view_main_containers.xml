@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.lucasurbas.masterdetails.ui.widget.CustomAppBar
+        <com.lucasurbas.masterdetail.ui.widget.CustomAppBar
             android:id="@+id/activity_main__custom_appbar"
             android:fitsSystemWindows="true"
             android:stateListAnimator="@animator/appbar_always_elevated"
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <com.lucasurbas.masterdetails.ui.widget.BoundedFrameLayout
+        <com.lucasurbas.masterdetail.ui.widget.BoundedFrameLayout
             android:id="@+id/activity_main__frame_master"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,7 +29,7 @@
 
     </LinearLayout>
 
-    <com.lucasurbas.masterdetails.ui.widget.BoundedFrameLayout
+    <com.lucasurbas.masterdetail.ui.widget.BoundedFrameLayout
         android:id="@+id/activity_main__frame_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

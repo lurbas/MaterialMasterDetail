@@ -19,7 +19,7 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
-        <com.lucasurbas.masterdetails.ui.widget.BoundedFrameLayout
+        <com.lucasurbas.masterdetail.ui.widget.BoundedFrameLayout
             android:id="@+id/view_main_toolbar__frame_specific"
             android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
@@ -33,7 +33,7 @@
                 android:id="@+id/view_main_toolbar__toolbar_specific"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"/>
-        </com.lucasurbas.masterdetails.ui.widget.BoundedFrameLayout>
+        </com.lucasurbas.masterdetail.ui.widget.BoundedFrameLayout>
 
         <android.support.v4.widget.Space
             android:id="@+id/view_main_toolbar__space_toolbar"

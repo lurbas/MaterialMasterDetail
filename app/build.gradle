@@ -5,7 +5,7 @@ android {
     compileSdkVersion 24
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.lucasurbas.masterdetails"
+        applicationId "com.lucasurbas.masterdetail"
         minSdkVersion 21
         targetSdkVersion 24
         versionCode 1

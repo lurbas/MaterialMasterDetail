@@ -9,7 +9,7 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <com.lucasurbas.masterdetails.ui.widget.ContainersLayout
+    <com.lucasurbas.masterdetail.ui.widget.ContainersLayout
         android:id="@+id/activity_main__containers_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
 
-    <com.lucasurbas.masterdetails.ui.widget.BoundedFrameLayout
+    <com.lucasurbas.masterdetail.ui.widget.BoundedFrameLayout
         android:id="@+id/view_main_toolbar__frame_specific"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -26,6 +26,6 @@
             android:id="@+id/view_main_toolbar__toolbar_specific"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"/>
-    </com.lucasurbas.masterdetails.ui.widget.BoundedFrameLayout>
+    </com.lucasurbas.masterdetail.ui.widget.BoundedFrameLayout>
 
 </merge>
