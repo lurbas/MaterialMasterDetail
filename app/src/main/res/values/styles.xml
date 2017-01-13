@@ -12,6 +12,7 @@
     <style name="AppTheme.ActionBar" parent="AppTheme">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/grey</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
