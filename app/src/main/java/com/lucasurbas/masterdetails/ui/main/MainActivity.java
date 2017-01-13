@@ -55,8 +55,11 @@ public class MainActivity extends BaseActivity implements MainContract.View, Nav
             ViewCompat.setOnApplyWindowInsetsListener(insetsView, new OnApplyWindowInsetsListener() {
                 @Override
                 public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
-                    insetsView.setTranslationY(insets.getSystemWindowInsetTop());
-                    navigationSideView.setTranslationY(-insets.getSystemWindowInsetTop());
+                    ((ViewGroup.MarginLayoutParams) insetsView.getLayoutParams()).topMargin = insets.getSystemWindowInsetTop();
+                    ((ViewGroup.MarginLayoutParams) insetsView.getLayoutParams()).bottomMargin = insets.getSystemWindowInsetBottom();
+                    insetsView.requestLayout();
+                    ((ViewGroup.MarginLayoutParams) navigationSideView.getLayoutParams()).topMargin = (-insets.getSystemWindowInsetTop());
+                    navigationSideView.requestLayout();
                     return insets.consumeSystemWindowInsets();
                 }
             });

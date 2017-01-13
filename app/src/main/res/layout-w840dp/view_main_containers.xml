@@ -31,6 +31,7 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/container_horizontal_padding"
                 android:layout_marginRight="@dimen/container_horizontal_padding"
+                app:cardCornerRadius="0dp"
                 app:bounded_width="@dimen/container_max_width"/>
 
             <android.support.v4.widget.Space
