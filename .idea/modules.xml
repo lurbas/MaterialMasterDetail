@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MasterDetailsTemplate.iml" filepath="$PROJECT_DIR$/MasterDetailsTemplate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MasterDetail.iml" filepath="$PROJECT_DIR$/MasterDetail.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
