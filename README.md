@@ -1,11 +1,10 @@
-# MaterialMasterDetail
+# Material Master/Detail
 
 Android Application sample of how to implement Master/Detail pattern that follows Material Design visual language.
 
 It is a part of an article called "Case Study. Master/Detail Pattern" published on my personal blog. I highly recommend reading it to gain more context and purpose of this app. 
 
 Just follow [this link](http://goo.gl/ex8MVd).
-
 
 You can also try it by downloading a demo from [Play Store] (https://play.google.com/store/apps/details?id=com.lucasurbas.masterdetail).
 
@@ -19,7 +18,7 @@ Be sure to check this sample on Mobile as well as on Tablet!
 
 ### License
 
-    Copyright 2015 Lucas Urbas
+    Copyright 2017 Lucas Urbas
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
