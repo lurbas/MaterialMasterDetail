@@ -1,6 +1,7 @@
 package com.lucasurbas.masterdetail.ui.main;
 
 
+import com.lucasurbas.masterdetail.data.Person;
 import com.lucasurbas.masterdetail.ui.util.BaseNavigator;
 import com.lucasurbas.masterdetail.ui.util.BasePresenter;
 import com.lucasurbas.masterdetail.ui.util.BaseView;
@@ -15,6 +16,8 @@ public interface MainContract {
         void goToHomeFeed();
 
         void goToPeople();
+
+        void goToPersonDetails(Person person);
 
         void goToFavorites();
 

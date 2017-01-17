@@ -2,7 +2,7 @@ package com.lucasurbas.masterdetail.injection.people;
 
 import com.lucasurbas.masterdetail.injection.FragmentScope;
 import com.lucasurbas.masterdetail.ui.people.PeopleContract;
-import com.lucasurbas.masterdetail.ui.main.MainNavigator;
+import com.lucasurbas.masterdetail.ui.people.PeopleNavigator;
 import com.lucasurbas.masterdetail.ui.people.PeoplePresenter;
 
 import dagger.Module;
@@ -15,7 +15,7 @@ import dagger.Provides;
 public class PeopleModule {
 
     @Provides
-    PeopleContract.Navigator providePeopleNavigator(MainNavigator navigator) {
+    PeopleContract.Navigator providePeopleNavigator(PeopleNavigator navigator) {
         return navigator;
     }
 

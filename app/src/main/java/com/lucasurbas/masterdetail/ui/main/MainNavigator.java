@@ -8,7 +8,6 @@ import com.lucasurbas.masterdetail.data.Person;
 import com.lucasurbas.masterdetail.ui.favorites.FavoritesFragment;
 import com.lucasurbas.masterdetail.ui.homefeed.HomeFeedFragment;
 import com.lucasurbas.masterdetail.ui.map.MapFragment;
-import com.lucasurbas.masterdetail.ui.people.PeopleContract;
 import com.lucasurbas.masterdetail.ui.people.PeopleFragment;
 import com.lucasurbas.masterdetail.ui.persondetails.PersonDetailsFragment;
 
@@ -18,7 +17,7 @@ import javax.inject.Inject;
  * Created by Lucas on 02/01/2017.
  */
 
-public class MainNavigator implements MainContract.Navigator, PeopleContract.Navigator {
+public class MainNavigator implements MainContract.Navigator {
 
     private static final String TAG_DETAILS = "tag_details";
     private static final String TAG_MASTER = "tag_master";
