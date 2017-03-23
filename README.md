@@ -7,7 +7,7 @@ It is a part of an article called "Case Study. Master/Detail Pattern" published 
 
 Just follow [this link](http://goo.gl/ex8MVd).
 
-You can also try it by downloading a demo from [Play Store] (https://play.google.com/store/apps/details?id=com.lucasurbas.masterdetail).
+You can also try it by downloading a demo from [Play Store](https://play.google.com/store/apps/details?id=com.lucasurbas.masterdetail).
 
 Be sure to check this sample on Mobile as well as on Tablet!
 
