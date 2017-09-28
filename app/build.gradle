@@ -4,7 +4,7 @@ def commitCount = Integer.parseInt('git rev-list --all --count'.execute([], proj
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.lucasurbas.masterdetail"
         minSdkVersion 21
