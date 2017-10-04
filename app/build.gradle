@@ -34,28 +34,28 @@ dependencies {
     })
 
     // Support dependencies
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support:support-v4:26.1.0'
-    implementation 'com.android.support:design:26.1.0'
-    implementation 'com.android.support:cardview-v7:26.1.0'
-    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:support-v4:26.1.0'
+    compile 'com.android.support:design:26.1.0'
+    compile 'com.android.support:cardview-v7:26.1.0'
+    compile 'com.android.support:recyclerview-v7:26.1.0'
 
     // Dagger dependencies
     annotationProcessor "com.google.dagger:dagger-compiler:2.11"
     provided 'org.glassfish:javax.annotation:10.0-b28'
-    implementation "com.google.dagger:dagger:2.11"
+    compile "com.google.dagger:dagger:2.11"
 
     // Butterknife dependencies
-    implementation 'com.jakewharton:butterknife:8.8.1'
+    compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     // 4dp line alignment
-    implementation 'com.actinarium.aligned:aligned:0.1'
+    compile 'com.actinarium.aligned:aligned:0.1'
 
     // Toolbar alignment
-    implementation 'com.lucasurbas:guidelinescompattoolbar:1.0.0'
+    compile 'com.lucasurbas:guidelinescompattoolbar:1.0.0'
 
 
-    testImplementation 'junit:junit:4.12'
+    testCompile 'junit:junit:4.12'
 }
 
