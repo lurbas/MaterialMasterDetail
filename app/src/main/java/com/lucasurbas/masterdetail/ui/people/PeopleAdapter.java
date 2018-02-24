@@ -48,7 +48,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PersonView
     @Override
     public void onBindViewHolder(PersonViewHolder holder, int position) {
         holder.personView.setUser(peopleList.get(position));
-        holder.personView.setonPersonClickListener(onPersonClickListener);
+        holder.personView.setOnPersonClickListener(onPersonClickListener);
     }
 
     public void setPeopleList(List<Person> peopleList) {
