@@ -3,10 +3,11 @@ package com.lucasurbas.masterdetail.ui.people;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
+import com.lucasurbas.listitemview.ListItemView;
 import com.lucasurbas.masterdetail.R;
 import com.lucasurbas.masterdetail.data.Person;
 
@@ -19,13 +20,10 @@ import butterknife.ButterKnife;
 
 public class PersonView extends FrameLayout {
 
-    @BindView(R.id.item_view_user__row) View row;
-    @BindView(R.id.item_view_user__name) TextView name;
-    @BindView(R.id.item_view_user__description) TextView description;
-    @BindView(R.id.item_view_user__action) View action;
+    @BindView(R.id.item_view_user__row)
+    ListItemView row;
 
     private Person person;
-    private PersonView.OnPersonClickListener onPersonClickListener;
 
     public interface OnPersonClickListener {
 
@@ -51,12 +49,12 @@ public class PersonView extends FrameLayout {
 
     public void setUser(Person person) {
         this.person = person;
-        name.setText(person.getName());
-        description.setText(person.getDescription());
+        row.setTitle(person.getName());
+        row.setSubtitle(person.getDescription());
+        row.getAvatarView().setImageDrawable(getResources().getDrawable(R.drawable.circle_black_transparent));
     }
 
-    public void setonPersonClickListener(final OnPersonClickListener onPersonClickListener) {
-        this.onPersonClickListener = onPersonClickListener;
+    public void setOnPersonClickListener(final OnPersonClickListener onPersonClickListener) {
         if (onPersonClickListener != null) {
             row.setOnClickListener(new OnClickListener() {
                 @Override
@@ -64,15 +62,17 @@ public class PersonView extends FrameLayout {
                     onPersonClickListener.onPersonClick(person);
                 }
             });
-            action.setOnClickListener(new OnClickListener() {
+            row.setOnMenuItemClickListener(new ListItemView.OnMenuItemClickListener() {
                 @Override
-                public void onClick(View view) {
-                    onPersonClickListener.onPersonActionClick(person);
+                public void onActionMenuItemSelected(MenuItem item) {
+                    if(item.getItemId() == R.id.menu_person_item__favorite){
+                        onPersonClickListener.onPersonActionClick(person);
+                    }
                 }
             });
         } else {
             row.setOnClickListener(null);
-            action.setOnClickListener(null);
+            row.setOnMenuItemClickListener(null);
         }
     }
 }

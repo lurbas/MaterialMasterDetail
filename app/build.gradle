@@ -57,6 +57,8 @@ dependencies {
     // Toolbar alignment
     compile 'com.lucasurbas:guidelinescompattoolbar:1.0.2'
 
+    // List Item
+    compile 'com.lucasurbas:listitemview:1.0.5'
 
     testCompile 'junit:junit:4.12'
 }
