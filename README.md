@@ -5,7 +5,7 @@ Android Application sample of how to implement Master/Detail pattern that follow
 
 It is a part of an article called "Case Study. Master/Detail Pattern" published on my personal blog. I highly recommend reading it to gain more context and purpose of this app. 
 
-Just follow [this link](http://goo.gl/ex8MVd).
+Just follow [this link](https://medium.com/@lucasurbas/case-study-master-detail-pattern-revisited-86c0ed7fc3e).
 
 You can also try it by downloading a demo from [Play Store](https://play.google.com/store/apps/details?id=com.lucasurbas.masterdetail).
 
